@@ -12,9 +12,10 @@ def send_welcome(message):
 def shout_message(message):
     content = message.text
     if content == "oi":
-        bot.send_message(chat_id=message.chat.id, text="Eu não faço nada ainda, então joga isso aqui: ")
+        bot.send_message(chat_id=message.chat.id, text="Eu não faço nada ainda, então entra aqui: https://jisho.org/")
         bot.open
     else:
         bot.send_message(chat_id=message.chat.id, text="Digita /start de novo")
+        bot.open
 
 bot.polling()
