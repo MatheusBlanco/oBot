@@ -1,1 +1,1 @@
-pip install token
+pip install telegram.ext
