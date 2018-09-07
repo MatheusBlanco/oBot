@@ -13,8 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = loggin.getLogger(__name__)
 
 GENDER, PHOTO, LOCATION = range(3)
-
-
+print("Porra")
 def start(bot, update):
     reply_keyboard = [['Boy', 'Girl', 'Non-binary']]
 
@@ -22,9 +21,8 @@ def start(bot, update):
         'Oi! Vamos conversar'
         'Digita /cancel pra parar'
         'Are you a boy or a girl?'
-        reply_markup=ReplyKeyBoardMarkup(reply_keyboard, onte_time_keyboard=True)
         'What is the name of your rival?'
-    )
+        reply_markup=ReplyKeyBoardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return GENDER
 
@@ -71,18 +69,16 @@ def cancel(bot, update):
     return ConversationHandler.END
 
 def main():
-    # Create the EventHandler and pass it your bot's token.
+
     updater = Updater("TOKEN")
 
-    # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
-    # Add conversation handler with the states GENDER, PHOTO, LOCATION and BIO
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
 
         states={
-            GENDER: [RegexHandler('^(Boy|Girl|Other)$', gender)],
+            GENDER: [RegexHandler('^(Boy|Girl|Non-binary)$', gender)],
 
             PHOTO: [MessageHandler(Filters.photo, photo),
                     CommandHandler('skip', skip_photo)],
